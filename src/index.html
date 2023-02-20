@@ -1,14 +1,30 @@
-<!DOCTYPE html>
-<html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Page title</title>
-    <link rel="stylesheet" href="./sass/index.scss" />
-    <script type="module" src="./index.js"></script>
-  </head>
-  <body>
-    <!-- ❗️❗️❗️ Add partials like so for every page -->
-    <include src="./partials/example.html"></include>
-  </body>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script type="module" src="./libs/mindar/mindar-image.prod.js"></script>
+  <script type="module" src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+  <script type="module" src="./libs/mindar/mindar-image-aframe.prod.js"></script>
+  <script type="module" src="./main.js"></script>
+</head>
+
+<body>
+  <div style="position: absolute; z-index: 1000">
+    <div id="first-target-text" style="color: red;"> Hello World</div>
+  </div>
+  <a-scene id="ar-session"
+    mindar-image="imageTargetSrc: ./assets/targets.mind; autoStart: false; uiScanning:no""
+    embedded color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false"
+    device-orientation-permission-ui="enabled: false">
+    <a-camera position="0 0 0" look-controls="enabled: false" cursor="fuse: false; rayOrigin: mouse;"
+      raycaster="far: 1.2.0; objects: .clickable"></a-camera>
+    <a-entity id="first-target" mindar-image-target="targetIndex: 0">
+    </a-entity>
+    <a-entity id="second-target" mindar-image-target="targetIndex: 1">
+    </a-entity>
+
+    
+  </a-scene>
+</body>
+
 </html>
