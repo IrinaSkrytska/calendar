@@ -1,0 +1,48 @@
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="./libs/mindar/mindar-image.prod.js"></script>
+  <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+  <script src="./libs/mindar/mindar-image-aframe.prod.js"></script>
+  <link href="https://vjs.zencdn.net/8.0.4/video-js.css" rel="stylesheet" />
+  <link href="./css/styles.css" rel="stylesheet" />
+  <script src="./main.js"></script>
+</head>
+
+<body>
+  <div style="position: absolute; z-index: 1000">
+    <div id="first-target-text" style="color: red;"> Hello World</div>
+  </div>
+  <a-scene id="ar-session"
+    mindar-image="imageTargetSrc: ./assets/targets.mind; autoStart: false; uiScanning:no""
+    embedded color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false"
+    device-orientation-permission-ui="enabled: false">
+    <a-camera position="0 0 0" look-controls="enabled: false" cursor="fuse: false; rayOrigin: mouse;"
+      raycaster="far: 1.2.0; objects: .clickable"></a-camera>
+    <a-entity id="first-target" mindar-image-target="targetIndex: 0">
+    </a-entity>
+    <a-entity id="second-target" mindar-image-target="targetIndex: 1">
+    </a-entity>
+
+     <a-entity id="second-target" mindar-image-target="targetIndex: 7">
+    </a-entity>
+  </a-scene> 
+ 
+  <div class="video is_hidden">
+  <video
+    id="my-video"
+    class="video-js"
+    controls
+    preload="auto"
+    width="640"
+    height="264"
+    data-setup="{}"
+  >
+    <source src="./videos/Kyiv_deoccupation.mp4" type="video/mp4" />
+  </video>
+</div> 
+  <script src="https://vjs.zencdn.net/8.0.4/video.min.js"></script>
+</body>
+
+</html>
