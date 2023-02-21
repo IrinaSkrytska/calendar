@@ -1,14 +1,18 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const video = document.querySelector("video");
+  const video = document.querySelector(".video");
   console.log(video);
+
+  const sceneAR = document.querySelector("#ar-session");
   const sceneEl = document.querySelector("a-scene");
   const arSystem = sceneEl.systems["mindar-image-system"];
   const firstTarget = document.querySelector("#first-target");
   const secondTarget = document.querySelector("#second-target");
+  const sevenTarget = document.querySelector("#ten-target");
 
-  const firtTargetText = document.querySelector("#first-target-text");
+  const firstTargetText = document.querySelector("#first-target-text");
 
-  firtTargetText.style.display = "none";
+  video.classList.add("is_hidden");
+  firstTargetText.style.display = "none";
 
   arSystem.start(); // start AR auto request to Camera
 
@@ -23,7 +27,8 @@ document.addEventListener("DOMContentLoaded", function () {
   // detect target found
   firstTarget.addEventListener("targetFound", (event) => {
     console.log("First target found");
-    // video.classList.remove("is_hidden");
+    video.classList.remove("is_hidden");
+    sceneAR.classList.add("is_hidden");
   });
   // detect target lost
   firstTarget.addEventListener("targetLost", (event) => {
@@ -31,11 +36,11 @@ document.addEventListener("DOMContentLoaded", function () {
   });
   secondTarget.addEventListener("targetFound", (event) => {
     console.log("Second target found");
-    firtTargetText.style.display = "block";
+    firstTargetText.style.display = "block";
   });
   // detect target lost
   secondTarget.addEventListener("targetLost", (event) => {
     console.log("Second target lost");
-    firtTargetText.style.display = "none";
+    firstTargetText.style.display = "none";
   });
 });
